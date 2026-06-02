@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     return res.status(result.status).json({ message: result.message });
   } catch (error) {
     return res.status(500).json({
-      message: error.message.includes("GMAIL_APP_PASSWORD")
+      message: error.message?.includes("GMAIL_APP_PASSWORD")
         ? "Email is not configured yet."
         : "Could not send message right now.",
     });

@@ -43,7 +43,7 @@ function validateContact({ name, email, message }) {
 
 function createTransport() {
   const user = process.env.GMAIL_USER || DEFAULT_TO_EMAIL;
-  const pass = process.env.GMAIL_APP_PASSWORD;
+  const pass = process.env.GMAIL_APP_PASSWORD?.replace(/\s/g, "");
 
   if (!pass) {
     throw new Error("Missing GMAIL_APP_PASSWORD environment variable.");

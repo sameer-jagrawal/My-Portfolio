@@ -67,7 +67,7 @@ const server = http.createServer(async (req, res) => {
     return sendJson(req, res, result.status, { message: result.message });
   } catch (error) {
     return sendJson(req, res, 500, {
-      message: error.message.includes("GMAIL_APP_PASSWORD")
+      message: error.message?.includes("GMAIL_APP_PASSWORD")
         ? "Email is not configured yet."
         : "Could not send message right now.",
     });

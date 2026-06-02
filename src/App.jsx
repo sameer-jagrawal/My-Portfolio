@@ -43,7 +43,11 @@ import {
   X,
   Zap,
 } from "lucide-react";
+import ishopScreenshot from "./assets/ishopss.png";
+import movieSearchScreenshot from "./assets/moviesearchss.png";
+import portfolioScreenshot from "./assets/portfolioss.png";
 import sameerPortrait from "./assets/sameer-portrait.png";
+import shopMartScreenshot from "./assets/shopmartss.png";
 
 const navItems = ["Home", "About", "Education", "Skills", "Projects", "Certificates", "Testimonials", "Contact"];
 
@@ -159,6 +163,7 @@ const projects = [
     live: "https://ishop-frontend-nine.vercel.app/",
     code: "https://github.com/sameer-jagrawal/Ishop-frontend",
     metric: "Storefront",
+    image: ishopScreenshot,
     accent: "from-[#30115d] via-[#5f1ea1] to-[#050008]",
   },
   {
@@ -170,6 +175,7 @@ const projects = [
     live: "https://shop-mart-first-e-commerce-project.vercel.app/",
     code: "https://github.com/sameer-jagrawal/ShopMart-first-e-commerce-project-with-react.js-",
     metric: "Commerce",
+    image: shopMartScreenshot,
     accent: "from-[#7a1f4f] via-[#4b1b77] to-[#050008]",
   },
   {
@@ -181,6 +187,7 @@ const projects = [
     live: "https://movies-search-app-api-fetch.vercel.app/",
     code: "https://github.com/sameer-jagrawal/Movies-Search-App-API-Fetch-",
     metric: "API Fetch",
+    image: movieSearchScreenshot,
     accent: "from-[#173b6c] via-[#35206f] to-[#050008]",
   },
   {
@@ -192,6 +199,7 @@ const projects = [
     live: "https://my-portfolio-xi-lovat-44.vercel.app/",
     code: "https://github.com/sameer-jagrawal/My-Portfolio",
     metric: "Portfolio",
+    image: portfolioScreenshot,
     accent: "from-[#0f5d63] via-[#40206f] to-[#050008]",
   },
 ];
@@ -411,8 +419,8 @@ function Hero() {
               <img className="portrait-image" src={sameerPortrait} alt="Sameer Jagrawal portrait" />
               <div className="scan-line" />
               <div className="relative z-10 text-center">
-                <p className="mt-5 text-2xl font-semibold font-display text-soft">Frontend-focused MERN Developer</p>
-                <p className="mt-2 text-sm text-soft/60">React / Tailwind / Motion / Clean UI</p>
+                <p className="mt-5 text-2xl font-semibold font-display text-soft">Backend-focused MERN Developer</p>
+                <p className="mt-2 text-sm text-soft/60">Node.js / Mongo DB / Express js / REST APIs</p>
               </div>
             </div>
           </div>
@@ -617,7 +625,7 @@ function Projects() {
               >
                 <div className={`project-visual bg-gradient-to-br ${project.accent}`}>
                   <div className="browser-bar"><span /><span /><span /></div>
-                  <div className="project-initials">{project.title.slice(0, 2)}</div>
+                  <img className="project-screenshot" src={project.image} alt={`${project.title} screenshot`} loading="lazy" />
                   <div className="floating-label">{project.metric}</div>
                 </div>
                 <div className="project-content">
@@ -810,6 +818,72 @@ function Contact() {
   );
 }
 
+function WelcomeModal() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (sessionStorage.getItem("sameer-welcome-seen")) return;
+    const timer = setTimeout(() => setOpen(true), 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  function closeModal() {
+    sessionStorage.setItem("sameer-welcome-seen", "true");
+    setOpen(false);
+  }
+
+  return (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          className="welcome-overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          role="presentation"
+        >
+          <motion.div
+            className="welcome-modal"
+            initial={{ opacity: 0, y: 36, scale: 0.92 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 18, scale: 0.96 }}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="welcome-title"
+          >
+            <button className="welcome-close" type="button" onClick={closeModal} aria-label="Close welcome message">
+              <X size={18} />
+            </button>
+            <div className="welcome-character" aria-hidden="true">
+              <div className="welcome-hand">Hi</div>
+              <div className="welcome-head">
+                <span />
+                <span />
+              </div>
+              <div className="welcome-body">
+                <Code2 size={28} />
+              </div>
+            </div>
+            <div className="welcome-copy">
+              <span className="section-chip">Welcome</span>
+              <h2 id="welcome-title" className="mt-5 text-4xl font-semibold font-display text-soft md:text-5xl">
+                Hello, I&apos;m <span className="text-gradient">Sameer</span>
+              </h2>
+              <p className="mt-4 leading-7 text-soft/65">
+                Welcome to my portfolio. I&apos;m glad you&apos;re here, take a look around and explore my projects, skills and work.
+              </p>
+              <button className="justify-center mt-7 primary-button" type="button" onClick={closeModal}>
+                Explore Portfolio <ArrowRight size={18} />
+              </button>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 function App() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 28, restDelta: 0.001 });
@@ -817,6 +891,7 @@ function App() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-ink font-body text-soft">
       <motion.div className="fixed left-0 top-0 z-[60] h-1 origin-left bg-purple-500" style={{ scaleX }} />
+      <WelcomeModal />
       <Navbar />
       <Hero />
       <About />

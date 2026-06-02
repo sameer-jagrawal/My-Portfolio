@@ -16,8 +16,8 @@ export default {
         rose: "0 0 52px rgba(255, 42, 85, 0.24)",
       },
       fontFamily: {
-        display: ["Space Grotesk", "Inter", "system-ui", "sans-serif"],
-        body: ["Inter", "system-ui", "sans-serif"],
+        display: ["Poppins", "system-ui", "sans-serif"],
+        body: ["Poppins", "system-ui", "sans-serif"],
       },
       animation: {
         marquee: "marquee 24s linear infinite",
