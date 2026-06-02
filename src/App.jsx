@@ -1,5 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { A11y, Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import {
   ArrowDown,
   ArrowRight,
@@ -38,6 +43,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
+import sameerPortrait from "./assets/sameer-portrait.png";
 
 const navItems = ["Home", "About", "Education", "Skills", "Projects", "Certificates", "Testimonials", "Contact"];
 
@@ -61,25 +67,23 @@ const education = [
     icon: GraduationCap,
     title: "Bachelor Degree",
     place: "University of Rajasthan, Jaipur",
-    year: "2022",
-    score: "CGPA 7.8/10",
-    tags: ["Self-learning", "Web Development", "JavaScript", "Problem Solving"],
+    stage: "Pursuing"
   },
   {
     icon: Award,
     title: "Higher Secondary",
-    place: "Kendriya Vidyalaya No. 4, Jaipur",
-    year: "2019",
-    score: "76%",
-    tags: ["Arts", "English", "Hindi", "Social Science"],
+    place: "Sharda Public Senior Secondery school, Jaipur",
+    year: "2023",
+    score: "94%",
+    tags: ["Arts", "English", "Hindi"],
   },
   {
     icon: Star,
     title: "Secondary School",
-    place: "Kendriya Vidyalaya No. 4, Jaipur",
+    place: "Sharda Public Senior Secondery school, Jaipur",
     year: "2017",
-    score: "70%",
-    tags: ["Mathematics", "Science", "English", "Hindi"],
+    score: "85%",
+    tags: ["Mathematics", "Science", "English", "Hindi",'Sanskrit'],
   },
 ];
 
@@ -145,34 +149,48 @@ const techMeta = {
 
 const projects = [
   {
-    title: "Swoo Tech Mart",
-    type: "Full-stack e-commerce",
+    title: "Ishop Frontend",
+    type: "E-commerce UI",
     description:
-      "Product browsing, filters, authentication, cart, order flow and admin controls wrapped in a polished responsive storefront.",
-    stack: ["Next.js", "React", "Redux", "Tailwind", "MongoDB"],
-    live: "https://swoo-ishop.vercel.app/",
-    code: "https://github.com/dishantsaini25/Ishop-Frontend.git",
-    accent: "from-purple-950 via-purple-900 to-carbon",
+      "Shopping experience with product pages, cart flow, responsive browsing and polished storefront sections.",
+    stack: ["React", "JavaScript", "CSS", "Responsive"],
+    live: "https://ishop-frontend-nine.vercel.app/",
+    code: "https://github.com/sameer-jagrawal/Ishop-frontend",
+    metric: "Storefront",
+    accent: "from-[#30115d] via-[#5f1ea1] to-[#050008]",
   },
   {
-    title: "BusyGrowth",
-    type: "Digital agency site",
+    title: "ShopMart",
+    type: "React commerce",
     description:
-      "A crisp service website with conversion-focused sections, responsive composition and clean visual hierarchy.",
-    stack: ["React", "CSS", "Responsive", "UI Design"],
-    live: "https://busygrowth.in/",
-    code: "https://github.com/dishantsaini25/busyGrowth.git",
-    accent: "from-purple-800 via-purple-950 to-carbon",
+      "First e-commerce project with direct product discovery, cart-focused UI and simple buying flow.",
+    stack: ["React", "JavaScript", "CSS", "UI Design"],
+    live: "https://shop-mart-first-e-commerce-project.vercel.app/",
+    code: "https://github.com/sameer-jagrawal/ShopMart-first-e-commerce-project-with-react.js-",
+    metric: "Commerce",
+    accent: "from-[#7a1f4f] via-[#4b1b77] to-[#050008]",
   },
   {
-    title: "Mini Web Apps",
-    type: "API utility collection",
+    title: "Movies Search",
+    type: "API app",
     description:
-      "Movie search, weather lookup and translator tools built around external APIs with lightweight interaction design.",
+      "Movie lookup app using API fetch, search handling, result cards and quick detail scanning.",
     stack: ["HTML5", "CSS3", "JavaScript", "APIs"],
-    live: "https://api-project-ruddy-nine.vercel.app/movie.html",
-    code: "https://github.com/dishantsaini25/Api-Project.git",
-    accent: "from-purple-700 via-purple-900 to-carbon",
+    live: "https://movies-search-app-api-fetch.vercel.app/",
+    code: "https://github.com/sameer-jagrawal/Movies-Search-App-API-Fetch-",
+    metric: "API Fetch",
+    accent: "from-[#173b6c] via-[#35206f] to-[#050008]",
+  },
+  {
+    title: "Portfolio",
+    type: "Personal site",
+    description:
+      "Animated portfolio with responsive sections, contact flow, project cards and modern React motion.",
+    stack: ["React", "Tailwind", "Responsive", "Vercel"],
+    live: "https://my-portfolio-xi-lovat-44.vercel.app/",
+    code: "https://github.com/sameer-jagrawal/My-Portfolio",
+    metric: "Portfolio",
+    accent: "from-[#0f5d63] via-[#40206f] to-[#050008]",
   },
 ];
 
@@ -345,7 +363,7 @@ function Hero() {
       <motion.div style={{ y, opacity }} className="absolute hidden border rounded-full right-8 top-28 h-72 w-72 border-violet/30 md:block" />
       <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
         <motion.div variants={stagger} initial="hidden" animate="show" className="relative z-10">
-          <motion.span variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold border rounded-md border-purple-500/30 bg-purple-500/10 text-purple-400 shadow-glow">
+          <motion.span variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-purple-400 border rounded-md border-purple-500/30 bg-purple-500/10 shadow-glow">
             <span className="bg-purple-500 rounded-full size-2 animate-pulse" /> Available for Work
           </motion.span>
           <motion.h1 variants={fadeUp} className="mt-8 font-display text-5xl font-semibold leading-[1.02] text-soft md:text-6xl xl:text-7xl">
@@ -388,11 +406,9 @@ function Hero() {
               </motion.span>
             ))}
             <div className="portrait-card">
+              <img className="portrait-image" src={sameerPortrait} alt="Sameer Jagrawal portrait" />
               <div className="scan-line" />
-              <div className="text-center">
-                <div className="grid mx-auto text-5xl font-semibold text-white bg-purple-600 border rounded-full size-36 place-items-center border-soft/15 shadow-glow">
-                  SJ
-                </div>
+              <div className="relative z-10 text-center">
                 <p className="mt-5 text-2xl font-semibold font-display text-soft">Frontend-focused MERN Developer</p>
                 <p className="mt-2 text-sm text-soft/60">React / Tailwind / Motion / Clean UI</p>
               </div>
@@ -431,17 +447,15 @@ function About() {
     <section id="about" className="section-pad">
       <SectionHeading eyebrow="About Me" title="Who I Am" text="A frontend-focused developer crafting animated, responsive and practical web experiences." />
       <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-        <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.35 }} className="relative p-8 overflow-hidden glass-panel min-h-96">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(118,60,172,0.42),transparent_34%),radial-gradient(circle_at_75%_70%,rgba(199,125,255,0.24),transparent_30%)]" />
-          <div className="relative flex flex-col justify-between h-full">
-            <UserRound className="text-purple-500 size-14" />
+        <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.35 }} className="about-portrait-panel">
+          <div className="about-portrait-ring">
+            <img src={sameerPortrait} alt="Sameer Jagrawal" className="about-portrait-image" />
+          </div>
+          <div className="about-focus">
+            <UserRound className="text-purple-500 size-8" />
             <div>
-              <p className="text-5xl font-semibold font-display text-soft">9+</p>
-              <p className="mt-2 text-soft/60">Months of focused practice</p>
-            </div>
-            <div className="p-5 border rounded-2xl border-soft/10 bg-ink/50">
-              <p className="text-sm uppercase tracking-[0.32em] text-purple-500">Current Focus</p>
-              <p className="mt-2 text-2xl font-semibold text-soft">React interfaces that move beautifully.</p>
+              <p className="text-sm uppercase tracking-[0.24em] text-purple-500">Current Focus</p>
+              <p className="mt-1 text-xl font-semibold text-soft">React interfaces that move beautifully.</p>
             </div>
           </div>
         </motion.div>
@@ -503,7 +517,7 @@ function Education() {
                   <h3 className="text-2xl font-semibold font-display text-soft">{title}</h3>
                   <p className="mt-2 font-semibold text-purple-500">{place}</p>
                 </div>
-                <div className="px-4 py-2 text-sm font-semibold border rounded-full border-purple-500/30 bg-purple-500/10 text-purple-500">{year} / {score}</div>
+                <div className="px-4 py-2 text-sm font-semibold text-purple-500 border rounded-full border-purple-500/30 bg-purple-500/10">{year} / {score}</div>
               </div>
               <div className="flex flex-wrap gap-2 mt-6">
                 {tags.map((tag) => <span key={tag} className="tag">{tag}</span>)}
@@ -571,56 +585,66 @@ function Skills() {
 }
 
 function Projects() {
-  const [active, setActive] = useState(0);
-  const project = projects[active];
-
-  const next = () => setActive((index) => (index + 1) % projects.length);
-  const prev = () => setActive((index) => (index - 1 + projects.length) % projects.length);
-
   return (
     <section id="projects" className="section-pad bg-carbon/40">
-      <SectionHeading eyebrow="Projects" title="Selected Work" text="Project cards reveal like product panels, with links, stack pills and animated preview surfaces." />
-      <div className="max-w-6xl mx-auto">
-        <AnimatePresence mode="wait">
-          <motion.article
-            key={project.title}
-            initial={{ opacity: 0, rotateY: 18, y: 35 }}
-            animate={{ opacity: 1, rotateY: 0, y: 0 }}
-            exit={{ opacity: 0, rotateY: -18, y: -20 }}
-            transition={{ duration: 0.55 }}
-            className="project-card"
-          >
-            <div className={`project-visual bg-gradient-to-br ${project.accent}`}>
-              <div className="browser-bar"><span /><span /><span /></div>
-              <div className="preview-grid">
-                <div className="preview-large" />
-                <div className="preview-small" />
-                <div className="preview-small delay" />
-              </div>
-              <div className="floating-label">{project.type}</div>
-            </div>
-            <div className="p-7 md:p-10">
-              <p className="text-sm uppercase tracking-[0.28em] text-purple-500">{String(active + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}</p>
-              <h3 className="mt-4 text-3xl font-semibold font-display text-soft md:text-5xl">{project.title}</h3>
-              <p className="mt-5 text-lg leading-8 text-soft/60">{project.description}</p>
-              <div className="flex flex-wrap gap-2 mt-7">
-                {project.stack.map((tag) => <TechBadge key={tag} name={tag} compact />)}
-              </div>
-              <div className="flex flex-wrap gap-3 mt-8">
-                <a className="secondary-button" href={project.code} target="_blank" rel="noreferrer"><Github size={18} /> Code</a>
-                <a className="primary-button" href={project.live} target="_blank" rel="noreferrer">Live Demo <ExternalLink size={18} /></a>
-              </div>
-            </div>
-          </motion.article>
-        </AnimatePresence>
-        <div className="flex items-center justify-center gap-4 mt-8">
-          <button className="icon-button" onClick={prev} aria-label="Previous project"><ChevronLeft /></button>
-          <div className="flex gap-2">
-            {projects.map((item, index) => (
-              <button key={item.title} onClick={() => setActive(index)} className={`h-2 rounded-full transition-all ${active === index ? "w-10 bg-lavender" : "w-2 bg-soft/20"}`} aria-label={`Open ${item.title}`} />
-            ))}
-          </div>
-          <button className="icon-button" onClick={next} aria-label="Next project"><ChevronRight /></button>
+      <SectionHeading eyebrow="Projects" title="Selected Work" text="Real projects with direct links, compact summaries and details revealed on hover." />
+      <div className="project-slider-wrap">
+        <Swiper
+          modules={[A11y, Autoplay, Navigation, Pagination]}
+          navigation={{ nextEl: ".project-next", prevEl: ".project-prev" }}
+          pagination={{ clickable: true, el: ".project-pagination" }}
+          autoplay={{ delay: 3600, disableOnInteraction: false, pauseOnMouseEnter: true }}
+          loop={projects.length > 3}
+          spaceBetween={20}
+          slidesPerView={1}
+          breakpoints={{
+            768: { slidesPerView: 2 },
+            1180: { slidesPerView: 3 },
+          }}
+          className="project-swiper"
+        >
+          {projects.map((project, index) => (
+            <SwiperSlide key={project.title}>
+              <motion.article
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ delay: index * 0.08 }}
+                className="project-card"
+              >
+                <div className={`project-visual bg-gradient-to-br ${project.accent}`}>
+                  <div className="browser-bar"><span /><span /><span /></div>
+                  <div className="project-initials">{project.title.slice(0, 2)}</div>
+                  <div className="floating-label">{project.metric}</div>
+                </div>
+                <div className="project-content">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.22em] text-purple-500">{project.type}</p>
+                      <h3 className="mt-2 text-2xl font-semibold font-display text-soft">{project.title}</h3>
+                    </div>
+                    <span className="project-number">{String(index + 1).padStart(2, "0")}</span>
+                  </div>
+                  <p className="project-summary">{project.description}</p>
+                  <div className="project-details">
+                    <div className="flex flex-wrap gap-2">
+                      {project.stack.map((tag) => <TechBadge key={tag} name={tag} compact />)}
+                    </div>
+                  </div>
+                  <div className="project-actions">
+                    <a className="project-link" href={project.code} target="_blank" rel="noreferrer"><Github size={17} /> Code</a>
+                    <a className="project-link project-link-primary" href={project.live} target="_blank" rel="noreferrer">Live <ExternalLink size={17} /></a>
+                  </div>
+                </div>
+              </motion.article>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <div className="project-slider-controls">
+          <button className="icon-button project-prev" type="button" aria-label="Previous projects"><ChevronLeft /></button>
+          <div className="project-pagination" />
+          <button className="icon-button project-next" type="button" aria-label="Next projects"><ChevronRight /></button>
         </div>
       </div>
     </section>
@@ -636,7 +660,7 @@ function Certificates() {
           <motion.div key={cert} variants={fadeUp} whileHover={{ y: -12, rotate: index % 2 ? -1.5 : 1.5 }} className="certificate-card">
             <div className="flex items-center justify-between">
               <Award className="text-purple-500 size-10" />
-              <span className="px-3 py-1 text-xs font-semibold rounded-full bg-purple-500/10 text-purple-500">Verified</span>
+              <span className="px-3 py-1 text-xs font-semibold text-purple-500 rounded-full bg-purple-500/10">Verified</span>
             </div>
             <h3 className="mt-10 text-2xl font-semibold font-display text-soft">{cert}</h3>
             <p className="mt-3 text-sm leading-6 text-soft/60">Certification milestone focused on web fundamentals, security awareness and practical development.</p>
