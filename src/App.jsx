@@ -67,7 +67,9 @@ const education = [
     icon: GraduationCap,
     title: "Bachelor Degree",
     place: "University of Rajasthan, Jaipur",
-    stage: "Pursuing"
+    year: "Pursuing",
+    score: "In progress",
+    tags: ["Self-learning", "Web Development", "JavaScript", "Problem Solving"],
   },
   {
     icon: Award,
