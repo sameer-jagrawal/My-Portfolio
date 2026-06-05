@@ -79,7 +79,7 @@ const education = [
     icon: Award,
     title: "Higher Secondary",
     place: "Sharda Public Senior Secondery school, Jaipur",
-    year: "2023",
+    year: "2025",
     score: "94%",
     tags: ["Arts", "English", "Hindi"],
   },
@@ -87,9 +87,9 @@ const education = [
     icon: Star,
     title: "Secondary School",
     place: "Sharda Public Senior Secondery school, Jaipur",
-    year: "2017",
+    year: "2023",
     score: "85%",
-    tags: ["Mathematics", "Science", "English", "Hindi",'Sanskrit'],
+    tags: ["Mathematics", "Science", "English", "Hindi",'Sanskrit',"Social Science"],
   },
 ];
 
