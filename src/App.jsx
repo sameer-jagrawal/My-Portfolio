@@ -46,24 +46,25 @@ import {
 import ishopScreenshot from "./assets/ishopss.png";
 import movieSearchScreenshot from "./assets/moviesearchss.png";
 import portfolioScreenshot from "./assets/portfolioss.png";
+import resumePdf from "./assets/Shelf Resume.pdf";
 import sameerPortrait from "./assets/sameer-portrait.png";
 import shopMartScreenshot from "./assets/shopmartss.png";
 
 const navItems = ["Home", "About", "Education", "Skills", "Projects", "Certificates", "Testimonials", "Contact"];
 
-const roles = ["MERN Stack Developer", "React UI Builder", "Frontend Engineer", "Animation Lover", "Problem Solver"];
+const roles = ["Full Stack MERN Developer", "React Developer", "Node.js Developer", "API Builder", "Problem Solver"];
 
 const stats = [
   { value: "9+", label: "Months Practice" },
   { value: "10+", label: "Projects" },
-  { value: "6+", label: "Certificates" },
+  { value: "MERN", label: "Core Stack" },
 ];
 
 const featureCards = [
-  { icon: Rocket, title: "MERN Stack", text: "Full-stack thinking with React, Node, Express and MongoDB." },
-  { icon: Zap, title: "Fast UI", text: "Interfaces that feel responsive, lively and easy to scan." },
-  { icon: Code2, title: "Clean Code", text: "Component-driven structure with reusable data and motion patterns." },
-  { icon: Sparkles, title: "Micro Motion", text: "Scroll reveals, floating cards, magnetic hover states and animated text." },
+  { icon: Rocket, title: "MERN Stack", text: "Full-stack products with MongoDB, Express, React and Node.js." },
+  { icon: Zap, title: "Fast UI", text: "Responsive React interfaces that are clean, quick and easy to use." },
+  { icon: Code2, title: "API Logic", text: "REST APIs, authentication, role flows and practical backend structure." },
+  { icon: Sparkles, title: "Product Polish", text: "Animated sections, readable layouts and details that make projects feel finished." },
 ];
 
 const education = [
@@ -106,6 +107,7 @@ const skillTabs = {
     ["Express.js", 80],
     ["REST APIs", 84],
     ["Authentication", 76],
+    ["Multi-tenant SaaS", 72],
   ],
   Database: [
     ["MongoDB", 83],
@@ -147,6 +149,10 @@ const techMeta = {
   Authentication: { icon: CheckCircle2, color: "#c77dff" },
   Aggregation: { icon: Database, color: "#b13cff" },
   "Responsive QA": { icon: Sparkles, color: "#c77dff" },
+  "Multi-tenant SaaS": { icon: BriefcaseBusiness, color: "#c77dff" },
+  SaaS: { icon: Cloud, color: "#ffffff" },
+  CRM: { icon: BriefcaseBusiness, color: "#ff2a55" },
+  "Role-Based Access": { icon: CheckCircle2, color: "#c77dff" },
   CSS: { icon: Palette, color: "#c77dff" },
   Responsive: { icon: Sparkles, color: "#c77dff" },
   "UI Design": { icon: Palette, color: "#c77dff" },
@@ -154,6 +160,18 @@ const techMeta = {
 };
 
 const projects = [
+  {
+    title: "SaaS CRM Platform",
+    type: "Multi-tenant MERN app",
+    description:
+      "CRM platform concept for multiple tenants with customer management, protected routes, role-based access and dashboard-first workflows.",
+    stack: ["React", "Node.js", "Express", "MongoDB", "SaaS", "CRM", "Role-Based Access"],
+    live: "#",
+    code: "#",
+    metric: "CRM SaaS",
+    image: null,
+    accent: "from-[#13294b] via-[#6b2f8f] to-[#050008]",
+  },
   {
     title: "Ishop Frontend",
     type: "E-commerce UI",
@@ -165,6 +183,18 @@ const projects = [
     metric: "Storefront",
     image: ishopScreenshot,
     accent: "from-[#30115d] via-[#5f1ea1] to-[#050008]",
+  },
+  {
+    title: "Portfolio",
+    type: "Personal site",
+    description:
+      "Animated portfolio with responsive sections, contact flow, project cards and modern React motion.",
+    stack: ["React", "Tailwind", "Responsive", "Vercel"],
+    live: "https://my-portfolio-xi-lovat-44.vercel.app/",
+    code: "https://github.com/sameer-jagrawal/My-Portfolio",
+    metric: "Portfolio",
+    image: portfolioScreenshot,
+    accent: "from-[#0f5d63] via-[#40206f] to-[#050008]",
   },
   {
     title: "ShopMart",
@@ -190,27 +220,6 @@ const projects = [
     image: movieSearchScreenshot,
     accent: "from-[#173b6c] via-[#35206f] to-[#050008]",
   },
-  {
-    title: "Portfolio",
-    type: "Personal site",
-    description:
-      "Animated portfolio with responsive sections, contact flow, project cards and modern React motion.",
-    stack: ["React", "Tailwind", "Responsive", "Vercel"],
-    live: "https://my-portfolio-xi-lovat-44.vercel.app/",
-    code: "https://github.com/sameer-jagrawal/My-Portfolio",
-    metric: "Portfolio",
-    image: portfolioScreenshot,
-    accent: "from-[#0f5d63] via-[#40206f] to-[#050008]",
-  },
-];
-
-const certificates = [
-  "Responsive Magic",
-  "Cascading Creativity",
-  "JavaScript DOMinate",
-  "Cyber Secure User",
-  "Ethical Hacking",
-  "IT Essentials",
 ];
 
 const testimonials = [
@@ -323,7 +332,7 @@ function Navbar() {
               {item}
             </button>
           ))}
-          <a href="/resume.pdf" className="inline-flex items-center gap-2 px-5 py-2.5 ml-2 text-sm font-semibold text-white transition bg-purple-600 rounded-full shadow-glow hover:bg-purple-500">
+          <a href={resumePdf} className="inline-flex items-center gap-2 px-5 py-2.5 ml-2 text-sm font-semibold text-white transition bg-purple-600 rounded-full shadow-glow hover:bg-purple-500" target="_blank" rel="noreferrer">
             <Download size={16} /> Resume
           </a>
         </div>
@@ -376,14 +385,14 @@ function Hero() {
           <motion.span variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-purple-400 border rounded-md border-purple-500/30 bg-purple-500/10 shadow-glow">
             <span className="bg-purple-500 rounded-full size-2 animate-pulse" /> Available for Work
           </motion.span>
-          <motion.h1 variants={fadeUp} className="mt-8 font-display text-5xl font-semibold leading-[1.02] text-soft md:text-6xl xl:text-7xl">
-            Hi, I&apos;m <span className="block text-purple-500">Sameer Jagrawal</span>
+          <motion.h1 variants={fadeUp} className="mt-8 max-w-5xl font-display text-4xl font-semibold leading-[1.12] text-soft sm:text-5xl md:text-6xl xl:text-7xl">
+            Hii, I&apos;m <span className="inline-block whitespace-nowrap text-purple-500">Sameer Jagrawal</span>
           </motion.h1>
           <motion.div variants={fadeUp} className="mt-6 text-2xl font-semibold min-h-10 font-display text-soft/82 md:text-3xl">
             I build as a <span className="text-purple-500">{typed}</span><span className="text-purple-400">|</span>
           </motion.div>
           <motion.p variants={fadeUp} className="max-w-2xl mt-6 text-lg leading-8 text-soft/60">
-            A modern MERN portfolio experience with scroll-first storytelling, animated cards, clean sections and UI moments that appear exactly when the visitor earns them.
+            Full stack MERN developer focused on building practical web apps with React, Node.js, Express, MongoDB, authentication, APIs and responsive product interfaces.
           </motion.p>
           <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mt-9">
             <button onClick={() => scrollToId("Projects")} className="primary-button">
@@ -419,8 +428,8 @@ function Hero() {
               <img className="portrait-image" src={sameerPortrait} alt="Sameer Jagrawal portrait" />
               <div className="scan-line" />
               <div className="relative z-10 text-center">
-                <p className="mt-5 text-2xl font-semibold font-display text-soft">Backend-focused MERN Developer</p>
-                <p className="mt-2 text-sm text-soft/60">Node.js / Mongo DB / Express js / REST APIs</p>
+                <p className="mt-5 text-2xl font-semibold font-display text-soft">Full Stack MERN Developer</p>
+                <p className="mt-2 text-sm text-soft/60">React / Node.js / Express / MongoDB / REST APIs</p>
               </div>
             </div>
           </div>
@@ -455,7 +464,7 @@ function Hero() {
 function About() {
   return (
     <section id="about" className="section-pad">
-      <SectionHeading eyebrow="About Me" title="Who I Am" text="A frontend-focused developer crafting animated, responsive and practical web experiences." />
+      <SectionHeading eyebrow="About Me" title="Who I Am" text="A full stack MERN developer building responsive interfaces, backend APIs and database-backed web products." />
       <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.8fr_1.2fr]">
         <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.35 }} className="about-portrait-panel">
           <div className="about-portrait-ring">
@@ -465,7 +474,7 @@ function About() {
             <UserRound className="text-purple-500 size-8" />
             <div>
               <p className="text-sm uppercase tracking-[0.24em] text-purple-500">Current Focus</p>
-              <p className="mt-1 text-xl font-semibold text-soft">React interfaces that move beautifully.</p>
+              <p className="mt-1 text-xl font-semibold text-soft">MERN apps with clean UI and useful backend flows.</p>
             </div>
           </div>
         </motion.div>
@@ -474,12 +483,12 @@ function About() {
             <h3 className="text-3xl font-semibold font-display text-soft">Sameer Jagrawal</h3>
             <p className="mt-2 font-semibold text-purple-500">MERN Stack Developer</p>
             <p className="mt-6 leading-8 text-soft/60">
-              I build clean, responsive web products with React and Tailwind CSS. This portfolio is designed to feel alive while staying readable: every section reveals through scroll, cards react to movement, and important information appears in layers.
+              I build full stack web products with MongoDB, Express.js, React.js and Node.js. I focus on clean UI, reusable components, REST APIs, authentication flows, database models and deployments that make a project usable from frontend to backend.
             </p>
             <div className="grid gap-4 mt-7 sm:grid-cols-2">
               {[
                 ["Name", "Sameer Jagrawal"],
-                ["Role", "MERN Developer"],
+                ["Role", "Full Stack MERN Developer"],
                 ["Location", "India"],
                 ["Status", "Available for Work"],
               ].map(([label, value]) => (
@@ -595,6 +604,25 @@ function Skills() {
 }
 
 function Projects() {
+  function ProjectAction({ href, children, primary = false }) {
+    const ready = href && href !== "#";
+    const className = `project-link ${primary ? "project-link-primary" : ""}`;
+
+    if (!ready) {
+      return (
+        <span className={`${className} cursor-not-allowed opacity-55`} aria-disabled="true">
+          {children}
+        </span>
+      );
+    }
+
+    return (
+      <a className={className} href={href} target="_blank" rel="noreferrer">
+        {children}
+      </a>
+    );
+  }
+
   return (
     <section id="projects" className="section-pad bg-carbon/40">
       <SectionHeading eyebrow="Projects" title="Selected Work" text="Real projects with direct links, compact summaries and details revealed on hover." />
@@ -625,7 +653,14 @@ function Projects() {
               >
                 <div className={`project-visual bg-gradient-to-br ${project.accent}`}>
                   <div className="browser-bar"><span /><span /><span /></div>
-                  <img className="project-screenshot" src={project.image} alt={`${project.title} screenshot`} loading="lazy" />
+                  {project.image ? (
+                    <img className="project-screenshot" src={project.image} alt={`${project.title} screenshot`} loading="lazy" />
+                  ) : (
+                    <div className="project-placeholder">
+                      <BriefcaseBusiness size={42} />
+                      <span>CRM thumbnail coming soon</span>
+                    </div>
+                  )}
                   <div className="floating-label">{project.metric}</div>
                 </div>
                 <div className="project-content">
@@ -643,8 +678,8 @@ function Projects() {
                     </div>
                   </div>
                   <div className="project-actions">
-                    <a className="project-link" href={project.code} target="_blank" rel="noreferrer"><Github size={17} /> Code</a>
-                    <a className="project-link project-link-primary" href={project.live} target="_blank" rel="noreferrer">Live <ExternalLink size={17} /></a>
+                    <ProjectAction href={project.code}><Github size={17} /> Code</ProjectAction>
+                    <ProjectAction href={project.live} primary>Live <ExternalLink size={17} /></ProjectAction>
                   </div>
                 </div>
               </motion.article>
@@ -664,18 +699,10 @@ function Projects() {
 function Certificates() {
   return (
     <section id="certificates" className="section-pad">
-      <SectionHeading eyebrow="Certificates" title="Learning Proof" text="Animated certificate tiles for achievement highlights and continuous learning signals." />
-      <motion.div variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="grid gap-5 mx-auto max-w-7xl sm:grid-cols-2 lg:grid-cols-3">
-        {certificates.map((cert, index) => (
-          <motion.div key={cert} variants={fadeUp} whileHover={{ y: -12, rotate: index % 2 ? -1.5 : 1.5 }} className="certificate-card">
-            <div className="flex items-center justify-between">
-              <Award className="text-purple-500 size-10" />
-              <span className="px-3 py-1 text-xs font-semibold text-purple-500 rounded-full bg-purple-500/10">Verified</span>
-            </div>
-            <h3 className="mt-10 text-2xl font-semibold font-display text-soft">{cert}</h3>
-            <p className="mt-3 text-sm leading-6 text-soft/60">Certification milestone focused on web fundamentals, security awareness and practical development.</p>
-          </motion.div>
-        ))}
+      <SectionHeading eyebrow="Certificates" title="Learning Proof" text="Certificate details will be added here soon." />
+      <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="certificate-empty mx-auto max-w-3xl">
+        <Award className="text-purple-500 size-12" />
+        <p className="text-lg font-semibold text-soft">Certificates section is empty for now.</p>
       </motion.div>
     </section>
   );
@@ -780,7 +807,7 @@ function Contact() {
           <div className="grid gap-4 mt-8">
             <span className="contact-row"><Mail /> sameerjagrawal2@gmail.com</span>
             <span className="contact-row"><MapPin /> India</span>
-            <span className="contact-row"><BriefcaseBusiness /> Available for frontend work</span>
+            <span className="contact-row"><BriefcaseBusiness /> Available for full stack MERN work</span>
           </div>
         </motion.div>
         <motion.form variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.25 }} onSubmit={handleSubmit} className="p-6 glass-panel md:p-8">
