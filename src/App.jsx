@@ -49,6 +49,7 @@ import portfolioScreenshot from "./assets/portfolioss.png";
 import resumePdf from "./assets/Shelf Resume.pdf";
 import sameerPortrait from "./assets/sameer-portrait.png";
 import shopMartScreenshot from "./assets/shopmartss.png";
+import crmScreenshot from "./assets/crm.png";
 
 const navItems = ["Home", "About", "Education", "Skills", "Projects", "Certificates", "Testimonials", "Contact"];
 
@@ -166,10 +167,10 @@ const projects = [
     description:
       "CRM platform concept for multiple tenants with customer management, protected routes, role-based access and dashboard-first workflows.",
     stack: ["React", "Node.js", "Express", "MongoDB", "SaaS", "CRM", "Role-Based Access"],
-    live: "#",
-    code: "#",
+    live: "https://estatepilot-frontend.vercel.app/",
+    code: "https://github.com/sameer-jagrawal/",
     metric: "CRM SaaS",
-    image: null,
+    image: crmScreenshot,
     accent: "from-[#13294b] via-[#6b2f8f] to-[#050008]",
   },
   {
@@ -386,7 +387,7 @@ function Hero() {
             <span className="bg-purple-500 rounded-full size-2 animate-pulse" /> Available for Work
           </motion.span>
           <motion.h1 variants={fadeUp} className="mt-8 max-w-5xl font-display text-4xl font-semibold leading-[1.12] text-soft sm:text-5xl md:text-6xl xl:text-7xl">
-            Hii, I&apos;m <span className="inline-block whitespace-nowrap text-purple-500">Sameer Jagrawal</span>
+            Hii, I&apos;m <span className="inline-block text-purple-500 whitespace-nowrap">Sameer Jagrawal</span>
           </motion.h1>
           <motion.div variants={fadeUp} className="mt-6 text-2xl font-semibold min-h-10 font-display text-soft/82 md:text-3xl">
             I build as a <span className="text-purple-500">{typed}</span><span className="text-purple-400">|</span>
@@ -700,7 +701,7 @@ function Certificates() {
   return (
     <section id="certificates" className="section-pad">
       <SectionHeading eyebrow="Certificates" title="Learning Proof" text="Certificate details will be added here soon." />
-      <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="certificate-empty mx-auto max-w-3xl">
+      <motion.div variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} className="max-w-3xl mx-auto certificate-empty">
         <Award className="text-purple-500 size-12" />
         <p className="text-lg font-semibold text-soft">Certificates section is empty for now.</p>
       </motion.div>
